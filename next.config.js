@@ -1,3 +1,7 @@
+const withImages = require("next-images");
+
 module.exports = {
-  reactStrictMode: true,
-}
+  Images: {
+    domains: ["https://cdn.shopify.com"],
+  },
+};

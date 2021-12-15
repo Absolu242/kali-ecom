@@ -1,0 +1,19 @@
+.catalog {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
+  width: 100%;
+  padding: 5rem 7rem 5rem 7rem;
+}
+
+.catalog .grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  min-height: 100vh;
+  height: 100vh;
+}
+/*# sourceMappingURL=home.styles.css.map */
