@@ -4,12 +4,14 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
-  background-color: #f4f4f4;
+  background-color: #f2f2f2;
   width: 200px;
   height: 200px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
+  margin: 1.5rem 0;
+  border-radius: 5px;
 
   .content {
     position: relative;

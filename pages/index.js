@@ -16,7 +16,7 @@ export default function Home({ products }) {
           {ShopProducts.map((item, i) => {
             return (
               <Link
-                href={`product/${item.node.id}`}
+                href={`product/${item.node.handle}`}
                 className="grid-item"
                 key={i}
               >

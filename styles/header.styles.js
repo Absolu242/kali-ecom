@@ -7,7 +7,7 @@ export const Header = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  padding: 5rem 7rem 5rem 7rem;
+  padding: 3rem 0;
   transition: all 0.5s ease;
 
   @media (max-width: 765px) {
@@ -21,9 +21,9 @@ export const HeaderNav = styled.div`
   transition: all 0.3s ease;
 `;
 export const HeaderLeft = styled.div`
+  display: flex;
+  align-items: center;
   button {
-    display: flex;
-    align-items: center;
     outline: none;
   }
   .logo {
@@ -39,6 +39,18 @@ export const HeaderLeft = styled.div`
 export const HeaderCenter = styled.div`
   position: relative;
   transform: translateX(5rem);
+
+  .btn-back {
+    display: flex;
+    align-items: center;
+    outline: none;
+
+    p {
+      padding-left: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+  }
 
   div {
     font-size: 1.4rem;

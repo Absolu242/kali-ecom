@@ -7,12 +7,13 @@ const Container = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+  padding: 0 7rem;
 `;
 
-export default function Layout({ children }) {
+export default function Layout({ children, single }) {
   return (
     <Container>
-      <HeaderBar />
+      <HeaderBar single={single} />
       {children}
     </Container>
   );
