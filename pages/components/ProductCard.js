@@ -13,15 +13,15 @@ const Container = styled.div`
   margin: 1.5rem 0;
   border-radius: 5px;
 
-  .content {
+  .Cardcontent {
     position: relative;
     top: 5rem;
     width: 100%;
-    .img {
+    .Cardimg {
       transition: all 0.3s;
     }
 
-    .bottom {
+    .Cardbottom {
       position: relative;
       top: 1rem;
       font-size: 1.3rem;
@@ -51,7 +51,7 @@ const Container = styled.div`
   }
 
   &:hover {
-    .img {
+    .Cardimg {
       transform: translateY(-10%);
     }
   }
@@ -63,11 +63,11 @@ export default function ProductCard({ item }) {
 
   return (
     <Container>
-      <div className="content">
-        <div className="img">
+      <div className="Cardcontent">
+        <div className="Cardimg">
           <img width={160} height={80} src={image} alt="product" />
         </div>
-        <div className="bottom">
+        <div className="Cardbottom">
           <button className="action">Add to cart</button>
           <p className="price">${price}</p>
         </div>

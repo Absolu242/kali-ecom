@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { singleProductQuery } from "../../queries/singleProduct.query";
 import {
@@ -7,18 +8,17 @@ import {
 } from "../../styles/singleProduct.style";
 import { storefront } from "../../utils/shopify-client";
 import Layout from "../components/Layout";
+import ProductCard from "../components/ProductCard";
 
-export default function SingleProduct({ product }) {
+export default function SingleProduct({ product, products }) {
   const [BtnId, setBtnId] = useState(null);
+
+  const ShopProducts = products === null ? [] : products.edges;
 
   return (
     <>
       {product ? (
-        <SingleProductContainer
-          style={{
-            backgroundImage: `url(${product.images.edges[0].node.src})`,
-          }}
-        >
+        <SingleProductContainer>
           <Layout single={true}>
             <div className="content">
               <div className="left">
@@ -27,15 +27,13 @@ export default function SingleProduct({ product }) {
                 <p className="desc"></p>
               </div>
 
-              {/* <div className="image">
-                <Image
-                  width={550}
-                  height={20}
-                  src="/item.png"
+              <div className="image">
+                <img
+                  src={product.images.edges[0].node.src}
                   alt="menu"
                   className="menu-icon"
                 />
-              </div> */}
+              </div>
 
               <div className="right">
                 <div className="sizes">
@@ -92,6 +90,32 @@ export default function SingleProduct({ product }) {
                 </div>
               </div>
             </div>
+
+            <div className="relatedProducts">
+              <div className="heading">
+                <p>Related Products</p>
+              </div>
+
+              <div className="grid">
+                {ShopProducts.filter(
+                  (item) => item.node.handle !== product.handle
+                )
+                  .slice(0, 4)
+                  .map((item, i) => {
+                    return (
+                      <Link
+                        href={`product/${item.node.handle}`}
+                        className="grid-item"
+                        key={i}
+                      >
+                        <a>
+                          <ProductCard item={item.node} />
+                        </a>
+                      </Link>
+                    );
+                  })}
+              </div>
+            </div>
           </Layout>
         </SingleProductContainer>
       ) : (
@@ -135,6 +159,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       product: data.data.productByHandle,
+      products: data.data.products,
     },
   };
 };

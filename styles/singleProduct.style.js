@@ -18,7 +18,7 @@ export const SingleProductContainer = styled.div`
     height: 70vh;
 
     .left {
-      max-width: 200px;
+      width: 40%;
       .vendor {
         font-size: 1.4rem;
       }
@@ -32,10 +32,25 @@ export const SingleProductContainer = styled.div`
 
     .image {
       position: relative;
-      transform: translate(-12%, 15%);
+      img {
+        position: relative;
+        left: 10%;
+        width: 75%;
+        animation: bounce 1.2s ease infinite alternate;
+      }
+
+      @keyframes bounce {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-20px);
+        }
+      }
     }
 
     .right {
+      width: 40%;
       .sizes {
         .label {
           font-size: 1.4rem;
@@ -116,6 +131,58 @@ export const SingleProductContainer = styled.div`
             color: #000;
             border-color: #aaa;
           }
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      top: 5rem;
+
+      .left,
+      .right {
+        width: 60%;
+      }
+      .image {
+        position: relative;
+        padding: 3rem 0;
+        img {
+          transform: translate(20%, 10%);
+        }
+      }
+    }
+  }
+
+  .relatedProducts {
+    position: relative;
+    padding-top: 10rem;
+    .heading {
+      p {
+        font-weight: 600;
+        font-size: 2rem;
+      }
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 765px) {
+      padding-top: 20rem;
+      position: relative;
+      width: 100%;
+      text-align: center;
+
+      .grid {
+        grid-template-columns: 1fr;
+
+        a {
+          display: flex;
+          justify-content: center;
         }
       }
     }

@@ -24,6 +24,28 @@ query ($handle: String!) {
     vendor
     tags
   }
+  products(first: 9) {
+    edges {
+      node {
+        id
+        title
+        handle
+        priceRange{
+          maxVariantPrice{
+            amount
+          }
+        }
+        
+        images(first: 1) {
+          edges {
+            node {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 `;
