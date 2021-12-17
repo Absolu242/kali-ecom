@@ -18,6 +18,13 @@ query{ products(first: 9) {
             }
           }
         }
+        options {
+          name
+          values
+        }
+        totalInventory
+        vendor
+        tags
       }
     }
   }}

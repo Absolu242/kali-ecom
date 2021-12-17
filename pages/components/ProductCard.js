@@ -10,7 +10,7 @@ const Container = styled.div`
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
   border-radius: 5px;
 
   .Cardcontent {
