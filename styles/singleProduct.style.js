@@ -36,10 +36,10 @@ export const SingleProductContainer = styled.div`
         position: relative;
         left: 10%;
         width: 75%;
-        animation: bounce 1.2s ease infinite alternate;
+        animation: bounceUp 1.2s ease infinite alternate;
       }
 
-      @keyframes bounce {
+      @keyframes bounceUp {
         from {
           transform: translateY(0);
         }
@@ -93,22 +93,6 @@ export const SingleProductContainer = styled.div`
 
         &-list {
           display: flex;
-
-          .color {
-            margin-right: 1rem;
-            border-radius: 50%;
-            height: 20px;
-            width: 20px;
-            font-size: 1rem;
-
-            &.active,
-            &:hover,
-            &:active,
-            &:focus {
-              outline-color: #aaa;
-              outline-width: thick;
-            }
-          }
         }
       }
 
@@ -126,10 +110,15 @@ export const SingleProductContainer = styled.div`
           border: 2px solid #000;
           font-weight: 600;
 
-          &:hover {
-            background: none;
-            color: #000;
-            border-color: #aaa;
+          &:disabled {
+            background-color: #aaa;
+            border: none;
+            cursor: not-allowed;
+
+            &:hover {
+              color: #fff;
+              border-color: none;
+            }
           }
         }
       }
@@ -197,6 +186,30 @@ export const SizeButton = styled.button`
   width: 25px;
   font-size: 1rem;
   outline: none;
-  background-color: ${(props) => (props.id === props.btnId ? "#000" : "none")};
-  color: ${(props) => (props.id === props.btnId ? "#fff" : "#000")};
+  background-color: ${(props) => (props.id === props.btnid ? "#000" : "none")};
+  color: ${(props) => (props.id === props.btnid ? "#fff" : "#000")};
+`;
+
+export const ColorButton = styled.button`
+  margin-right: 1rem;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid #aaa;
+
+  ${(props) =>
+    props.id === props.btnid
+      ? "animation: bounce .8s ease infinite alternate"
+      : ""};
+
+  @keyframes bounce {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0.8);
+    }
+  }
 `;

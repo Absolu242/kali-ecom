@@ -9,10 +9,14 @@ import {
   HeaderNav,
   HeaderRight,
 } from "../../styles/header.styles";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function HeaderBar({ single }) {
   const [clicked, setClicked] = useState(true);
   const router = useRouter();
+
+  const cart = useSelector((state) => state.cart);
 
   return (
     <Header>
@@ -79,16 +83,22 @@ export default function HeaderBar({ single }) {
 
         <HeaderRight>
           <button className="btn btn-prim">LOGIN</button>
-          <button className="btn ">
-            {" "}
-            <Image
-              width={17}
-              height={17}
-              src="/IconsCart.png"
-              alt="menu"
-              className="menu-icon"
-            />{" "}
-          </button>
+          <Link href="/cart">
+            <a>
+              <button className="btn ">
+                {" "}
+                <Image
+                  width={17}
+                  height={17}
+                  src="/IconsCart.png"
+                  alt="menu"
+                  className="menu-icon"
+                />{" "}
+              </button>
+
+              <span className="index">{cart.length}</span>
+            </a>
+          </Link>
         </HeaderRight>
       </HeaderNav>
     </Header>

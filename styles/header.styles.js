@@ -82,6 +82,18 @@ export const HeaderCenter = styled.div`
 `;
 export const HeaderRight = styled.div`
   display: flex;
+  align-items: center;
+
+  .index {
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    width: 35px;
+    height: 35px;
+    top: -1.4rem;
+  }
 
   .btn {
     font-weight: 600;

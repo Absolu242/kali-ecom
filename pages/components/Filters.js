@@ -85,8 +85,6 @@ export default function Filters({ filters }) {
     }
   };
 
-  console.log(isSize);
-
   useEffect(() => {
     filters({ color: isColor, size: isSize, brand: isBrand });
   }, [filters, isColor, isSize, isBrand]);

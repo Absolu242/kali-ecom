@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { singleProductQuery } from "../../queries/singleProduct.query";
+import { addToCart } from "../../redux/Slices/cart.slice";
 import {
+  ColorButton,
   SingleProductContainer,
   SizeButton,
 } from "../../styles/singleProduct.style";
@@ -11,9 +14,56 @@ import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 
 export default function SingleProduct({ product, products }) {
-  const [BtnId, setBtnId] = useState(null);
+  const [SizeId, setSizeId] = useState(null);
+  const [ColorId, setColorId] = useState(null);
+
+  const [selectSize, setSelectSize] = useState(null);
+  const [selectColor, setSelectColor] = useState(null);
+
+  const dispatch = useDispatch();
 
   const ShopProducts = products === null ? [] : products.edges;
+
+  const onSelectSize = (e) => {
+    if (SizeId === e.id) {
+      setSizeId(null);
+      setSelectSize(null);
+    } else {
+      setSizeId(e.id);
+      setSelectSize(e.size);
+    }
+  };
+
+  const onSelectColor = (e) => {
+    if (ColorId === e.id) {
+      setColorId(null);
+      setSelectColor(null);
+    } else {
+      setColorId(e.id);
+      setSelectColor(e.color);
+    }
+  };
+
+  const options = [
+    { name: "Color", values: [selectColor] },
+    { name: "Size", values: [selectSize] },
+  ];
+
+  const addProduct = {
+    handle: product.handle,
+    id: product.id,
+    images: product.images,
+    options,
+    priceRange: product.priceRange,
+    title: product.title,
+    totalInventory: product.totalInventory,
+  };
+
+  const handleAddToCart = () => {
+    if (selectColor === null || selectSize !== null) {
+      dispatch(addToCart(addProduct));
+    }
+  };
 
   return (
     <>
@@ -45,15 +95,14 @@ export default function SingleProduct({ product, products }) {
                         <SizeButton
                           key={i}
                           id={i}
-                          btnId={BtnId}
-                          onClick={() => setBtnId(i)}
+                          btnid={SizeId}
+                          onClick={() => onSelectSize({ id: i, size: size })}
                         >
                           {size}
                         </SizeButton>
                       ))}
                   </div>
                 </div>
-
                 <div className="info">
                   <div className="label">price</div>
                   <p className="value">
@@ -64,20 +113,34 @@ export default function SingleProduct({ product, products }) {
                   <div className="label">COLOR</div>
 
                   <div className="colors-list">
-                    {product.options
-                      .filter((item) => item.name === "Color")[0]
-                      .values.map((color, i) => (
-                        <button
-                          key={i}
-                          className="color"
-                          style={{ backgroundColor: `${color}` }}
-                        ></button>
-                      ))}
+                    {product.options.find((item) => item.name === "Color") !==
+                      undefined &&
+                      product.options
+                        .filter((item) => item.name === "Color")[0]
+                        .values.map((color, i) => (
+                          <ColorButton
+                            key={i}
+                            className="color"
+                            id={i}
+                            btnid={ColorId}
+                            style={{ backgroundColor: `${color}` }}
+                            onClick={() =>
+                              onSelectColor({ id: i, color: color })
+                            }
+                          ></ColorButton>
+                        ))}
                   </div>
                 </div>
-
                 <div className="actions">
-                  <button className="toCart">ADD TO CART</button>
+                  <button
+                    onClick={() => handleAddToCart()}
+                    className="toCart"
+                    disabled={
+                      selectColor === null || selectSize === null ? true : false
+                    }
+                  >
+                    ADD TO CART
+                  </button>
                   <button className="towish">
                     {" "}
                     <Image
@@ -88,6 +151,19 @@ export default function SingleProduct({ product, products }) {
                     />
                   </button>
                 </div>
+                {selectColor === null || selectSize === null ? (
+                  <p
+                    style={{
+                      color: "red",
+                      padding: "1rem 0",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Please Select one size and a color
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
 
@@ -138,9 +214,13 @@ export async function getStaticPaths() {
     }
   }
   
-  `).then((result) => {
-    return result;
-  });
+  `)
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   return {
     paths: data.data.products.edges.map((product) => ({
@@ -153,9 +233,13 @@ export async function getStaticPaths() {
 export const getStaticProps = async ({ params }) => {
   const data = await storefront(singleProductQuery, {
     handle: params.handle,
-  }).then((result) => {
-    return result;
-  });
+  })
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   return {
     props: {
       product: data.data.productByHandle,
