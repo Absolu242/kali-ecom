@@ -5,6 +5,7 @@ export const CartContainer = styled.div`
   text-align: center;
 
   .header {
+    min-width: 900px;
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
@@ -20,6 +21,7 @@ export const CartContainer = styled.div`
     margin-bottom: 2rem;
   }
   .body {
+    min-width: 900px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,5 +49,25 @@ export const CartContainer = styled.div`
     border: none;
     margin: 0.5rem;
     font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    overflow: scroll;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-track {
+      background-color: #f0f2f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgb(0, 0, 0);
+      background: #000;
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 5px;
+    }
   }
 `;

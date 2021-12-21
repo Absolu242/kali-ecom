@@ -5,9 +5,11 @@ import Link from "next/link";
 import { storefront } from "../utils/shopify-client";
 import { ProductsQuery } from "../queries/products.query";
 import Filters from "./components/Filters";
+import Image from "next/image";
 
 export default function Home({ products }) {
   const [filters, setFilters] = useState({});
+  const [isActive, setIsActive] = useState(false);
 
   const ShopProducts = products === null ? [] : products.data.products.edges;
 
@@ -20,8 +22,22 @@ export default function Home({ products }) {
   return (
     <Layout>
       <div className="catalog">
-        <div className="filter">
-          <Filters filters={setFilters} />
+        <div className="filterWrapper">
+          <button
+            className="filter-icon"
+            onClick={() => setIsActive((isActive) => !isActive)}
+          >
+            <Image
+              width={20}
+              height={17}
+              src="/filter.png"
+              alt="menu"
+              className="menu-icon"
+            />
+          </button>
+          <div className={isActive ? "filter active" : "filter"}>
+            <Filters filters={setFilters} />
+          </div>
         </div>
         <div className="grid">
           {ShopProducts === null ? (

@@ -35,7 +35,16 @@ export default function HeaderBar({ single }) {
           )}
           <button>
             <div className="logo">
-              <Image width={56} height={23} src="/LogoWhite.png" alt="menu" />
+              <Link href="/">
+                <a>
+                  <Image
+                    width={56}
+                    height={23}
+                    src="/LogoWhite.png"
+                    alt="menu"
+                  />
+                </a>
+              </Link>
             </div>
           </button>
         </HeaderLeft>

@@ -77,7 +77,7 @@ const CartPage = () => {
                 </p>
               </div>
             ))}
-            <h2>Grand Total: $ {getTotalPrice()}</h2>
+            <h2> Total: $ {getTotalPrice()}</h2>
           </>
         )}
       </CartContainer>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { singleProductQuery } from "../../queries/singleProduct.query";
 import { addToCart } from "../../redux/Slices/cart.slice";
@@ -64,6 +65,12 @@ export default function SingleProduct({ product, products }) {
       dispatch(addToCart(addProduct));
     }
   };
+
+  useEffect(() => {
+    setSelectSize(null), setSelectColor(null);
+    setSizeId(null);
+    setColorId(null);
+  }, [product.id]);
 
   return (
     <>
@@ -154,7 +161,7 @@ export default function SingleProduct({ product, products }) {
                 {selectColor === null || selectSize === null ? (
                   <p
                     style={{
-                      color: "red",
+                      color: "#aaa",
                       padding: "1rem 0",
                       fontSize: "1.2rem",
                     }}
@@ -180,7 +187,7 @@ export default function SingleProduct({ product, products }) {
                   .map((item, i) => {
                     return (
                       <Link
-                        href={`product/${item.node.handle}`}
+                        href={`/product/${item.node.handle}`}
                         className="grid-item"
                         key={i}
                       >

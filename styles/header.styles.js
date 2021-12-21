@@ -77,7 +77,17 @@ export const HeaderCenter = styled.div`
   }
 
   @media (max-width: 765px) {
-    display: none;
+    div {
+      display: none;
+    }
+    .btn-back {
+      position: relative;
+      left: -5rem;
+
+      p {
+        display: none;
+      }
+    }
   }
 `;
 export const HeaderRight = styled.div`
