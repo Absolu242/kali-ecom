@@ -11,8 +11,8 @@ import {
   SizeButton,
 } from "../../styles/singleProduct.style";
 import { storefront } from "../../utils/shopify-client";
-import Layout from "../components/Layout";
-import ProductCard from "../components/ProductCard";
+import Layout from "../../components/Layout";
+import ProductCard from "../../components/ProductCard";
 
 export default function SingleProduct({ product, products }) {
   const [SizeId, setSizeId] = useState(null);
@@ -72,6 +72,7 @@ export default function SingleProduct({ product, products }) {
     setColorId(null);
   }, [product.id]);
 
+  console.log(product);
   return (
     <>
       {product ? (

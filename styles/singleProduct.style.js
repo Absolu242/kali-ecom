@@ -5,7 +5,7 @@ export const SingleProductContainer = styled.div`
   background-color: #f4f4f4;
   background-position: 45% 60%;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 80vh;
   background-size: 40%;
   //background-image: none !important;
 
@@ -15,7 +15,7 @@ export const SingleProductContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    height: 70vh;
+    height: 60vh;
 
     .left {
       width: 40%;
@@ -127,7 +127,7 @@ export const SingleProductContainer = styled.div`
     @media (max-width: 1024px) {
       flex-direction: column;
       top: 5rem;
-
+     
       .left,
       .right {
         width: 60%;
@@ -144,7 +144,7 @@ export const SingleProductContainer = styled.div`
 
   .relatedProducts {
     position: relative;
-    padding-top: 10rem;
+    padding-top: 15rem;
     .heading {
       p {
         font-weight: 600;
@@ -165,7 +165,7 @@ export const SingleProductContainer = styled.div`
     }
 
     @media (max-width: 765px) {
-      padding-top: 20rem;
+      padding-top: 25rem;
       position: relative;
       width: 100%;
       text-align: center;
@@ -179,6 +179,11 @@ export const SingleProductContainer = styled.div`
         }
       }
     }
+  }
+
+
+  @media(max-width:765px){
+    height: 100vh;
   }
 `;
 

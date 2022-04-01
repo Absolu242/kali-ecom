@@ -8,7 +8,7 @@ import {
   HeaderLeft,
   HeaderNav,
   HeaderRight,
-} from "../../styles/header.styles";
+} from "../styles/header.styles";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
@@ -42,6 +42,7 @@ export default function HeaderBar({ single }) {
                     height={23}
                     src="/LogoWhite.png"
                     alt="menu"
+                    priority={true}
                   />
                 </a>
               </Link>

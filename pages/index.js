@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import ProductCard from "./components/ProductCard";
-import Layout from "./components/Layout";
+import ProductCard from "../components/ProductCard";
+import Layout from "../components/Layout";
 import Link from "next/link";
 import { storefront } from "../utils/shopify-client";
 import { ProductsQuery } from "../queries/products.query";
-import Filters from "./components/Filters";
+import Filters from "../components/Filters";
 import Image from "next/image";
 
 export default function Home({ products }) {

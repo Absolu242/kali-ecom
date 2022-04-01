@@ -1,12 +1,13 @@
-import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
   background-color: #f2f2f2;
-  width: 200px;
-  height: 200px;
+  max-width: 250px;
+  min-width: 200px;
+  max-height: 250px;
+  min-height: 200px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
@@ -32,11 +33,13 @@ const Container = styled.div`
 
       .action {
         background-color: #000;
-        font-size: 1rem;
+        font-size: 1.2rem;
         padding: 0 1.2rem !important;
         color: #fff;
         height: 18px;
         border-width: 2px;
+        border-radius: 3px;
+        
         &:hover {
           color: #000;
           background-color: #fff;
@@ -46,6 +49,8 @@ const Container = styled.div`
       .price {
         color: #000;
         padding: 1.5rem 0;
+        font-weight: 500;
+        font-size: 1.5rem;
       }
     }
   }
@@ -58,8 +63,8 @@ const Container = styled.div`
 `;
 
 export default function ProductCard({ item }) {
-  const image = item.images.edges[0].node.src;
-  const price = item.priceRange.maxVariantPrice.amount;
+  const image = item.images.edges[0].node.src || "";
+  const price = item.priceRange.maxVariantPrice.amount || "100";
 
   return (
     <Container>
@@ -68,7 +73,7 @@ export default function ProductCard({ item }) {
           <img width={160} height={80} src={image} alt="product" />
         </div>
         <div className="Cardbottom">
-          <button className="action">Add to cart</button>
+          <button className="action">Buy Now</button>
           <p className="price">${price}</p>
         </div>
       </div>

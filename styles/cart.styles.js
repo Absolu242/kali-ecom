@@ -13,7 +13,7 @@ export const CartContainer = styled.div`
   .header div {
     flex: 1;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     padding-bottom: 0.5rem;
     text-transform: uppercase;
@@ -31,7 +31,7 @@ export const CartContainer = styled.div`
   }
   .body > * {
     flex: 1;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
   .image {
     width: 100px;
