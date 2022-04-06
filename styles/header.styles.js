@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.div`
+export const HeaderContainer = styled.div`
   position: relative;
   width: 100%;
   background-position: 50% 50%;
@@ -26,8 +26,18 @@ export const HeaderLeft = styled.div`
   button {
     outline: none;
   }
-  .logo {
-    padding-left: 2rem;
+ 
+
+  a{
+    position: relative;
+    font-size: 1.6rem;
+    color: #000;
+    padding-right: 3rem;
+    transition: all .3s ease;
+
+    &:hover{
+      transform: translateY(-15%);
+    }
   }
 
   @media (max-width: 765px) {

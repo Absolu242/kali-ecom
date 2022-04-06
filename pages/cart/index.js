@@ -7,7 +7,7 @@ import {
   decrementQuantity,
   removeFromCart,
 } from "../../redux/Slices/cart.slice";
-import Layout from "../../components/Layout";
+import {Layout} from "../../components/_layout";
 
 const CartPage = () => {
   const cart = useSelector((state) => state.cart);
@@ -22,7 +22,7 @@ const CartPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout topbar={true}>
       <CartContainer>
         {cart.length === 0 ? (
           <h1>Your Cart is Empty!</h1>

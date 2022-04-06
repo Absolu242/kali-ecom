@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import HeaderBar from "./HeaderBar";
+import HeaderBar from "../HeaderBar";
 
 const Container = styled.div`
   position: relative;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   width: 100%;
   padding: 0 7rem;
@@ -14,10 +14,10 @@ const Container = styled.div`
   }
 `;
 
-export default function Layout({ children, single }) {
+export const Layout = ({ children, single, topbar })=> {
   return (
     <Container>
-      <HeaderBar single={single} />
+     {topbar &&  <HeaderBar single={single} />}
       {children}
     </Container>
   );

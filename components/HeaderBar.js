@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import {
-  Header,
+  HeaderContainer,
   HeaderCenter,
   HeaderLeft,
   HeaderNav,
@@ -19,10 +19,10 @@ export default function HeaderBar({ single }) {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <Header>
+    <HeaderContainer>
       <HeaderNav>
         <HeaderLeft>
-          {!single && (
+          {/* {!single && (
             <button onClick={() => setClicked((clicked) => !clicked)}>
               <Image
                 width={20}
@@ -32,7 +32,7 @@ export default function HeaderBar({ single }) {
                 className="menu-icon"
               />
             </button>
-          )}
+          )} */}
           <button>
             <div className="logo">
               <Link href="/">
@@ -40,7 +40,7 @@ export default function HeaderBar({ single }) {
                   <Image
                     width={56}
                     height={23}
-                    src="/LogoWhite.png"
+                    src="/Logo.png"
                     alt="menu"
                     priority={true}
                   />
@@ -48,6 +48,12 @@ export default function HeaderBar({ single }) {
               </Link>
             </div>
           </button>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+          <Link href="/catalog">
+            <a>Catalog</a>
+          </Link>
         </HeaderLeft>
 
         <HeaderCenter>
@@ -111,6 +117,6 @@ export default function HeaderBar({ single }) {
           </Link>
         </HeaderRight>
       </HeaderNav>
-    </Header>
+    </HeaderContainer>
   );
 }
